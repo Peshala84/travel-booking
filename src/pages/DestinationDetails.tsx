@@ -3,6 +3,38 @@ import { MapPin, Calendar, Star, Globe, Sun, Cloud, Thermometer } from 'lucide-r
 
 const destinations = [
   {
+    id: "2",
+    name: "Santorini Sunset Paradise",
+    location: "Greece",
+    rating: 4.9,
+    reviews: 245,
+    image: "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e",
+    description: "Experience breathtaking sunsets and pristine white architecture in the heart of the Aegean Sea.",
+    longDescription: "Discover the magic of Santorini, where white-washed buildings cascade down volcanic cliffs, offering spectacular views of the Aegean Sea. This iconic Greek island is famous for its dramatic sunsets, black sand beaches, and charming villages.",
+    highlights: [
+      "Watch the famous Oia sunset",
+      "Visit traditional wineries",
+      "Explore ancient ruins",
+      "Swim in volcanic hot springs"
+    ],
+    activities: [
+      "Wine tasting tours",
+      "Sailing excursions",
+      "Photography tours",
+      "Cooking classes"
+    ],
+    weather: {
+      bestTime: "April to October",
+      avgTemp: "25°C (77°F)",
+      climate: "Mediterranean"
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff",
+      "https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a",
+      "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e"
+    ]
+  },
+  {
     id: "1",
     name: "Santorini Sunset Paradise",
     location: "Greece",
@@ -34,7 +66,6 @@ const destinations = [
       "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e"
     ]
   }
-  // Add more destinations as needed
 ];
 
 export default function DestinationDetails() {
@@ -54,18 +85,18 @@ export default function DestinationDetails() {
         style={{ backgroundImage: `url(${destination.image})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-40">
-          <div className="max-w-7xl mx-auto px-4 h-full flex items-end pb-16">
+          <div className="flex items-end h-full px-4 pb-16 mx-auto max-w-7xl">
             <div className="text-white animate-fade-in">
-              <h1 className="text-5xl font-bold mb-4">{destination.name}</h1>
+              <h1 className="mb-4 text-5xl font-bold">{destination.name}</h1>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center">
-                  <MapPin className="h-5 w-5 mr-2" />
+                  <MapPin className="w-5 h-5 mr-2" />
                   {destination.location}
                 </div>
                 <div className="flex items-center">
-                  <Star className="h-5 w-5 text-yellow-400 mr-2" />
+                  <Star className="w-5 h-5 mr-2 text-yellow-400" />
                   <span>{destination.rating}</span>
-                  <span className="text-gray-300 ml-1">({destination.reviews} reviews)</span>
+                  <span className="ml-1 text-gray-300">({destination.reviews} reviews)</span>
                 </div>
               </div>
             </div>
@@ -74,20 +105,20 @@ export default function DestinationDetails() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div className="px-4 py-12 mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="space-y-8 lg:col-span-2">
             {/* Description */}
-            <div className="bg-white rounded-xl shadow-lg p-8 animate-slide-up">
-              <h2 className="text-2xl font-bold mb-4">About {destination.name}</h2>
-              <p className="text-gray-600 mb-6">{destination.longDescription}</p>
+            <div className="p-8 bg-white shadow-lg rounded-xl animate-slide-up">
+              <h2 className="mb-4 text-2xl font-bold">About {destination.name}</h2>
+              <p className="mb-6 text-gray-600">{destination.longDescription}</p>
               
-              <h3 className="text-xl font-semibold mb-4">Highlights</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <h3 className="mb-4 text-xl font-semibold">Highlights</h3>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {destination.highlights.map((highlight, index) => (
                   <div key={index} className="flex items-center space-x-2">
-                    <Sun className="h-5 w-5 text-yellow-500" />
+                    <Sun className="w-5 h-5 text-yellow-500" />
                     <span>{highlight}</span>
                   </div>
                 ))}
@@ -95,12 +126,12 @@ export default function DestinationDetails() {
             </div>
 
             {/* Activities */}
-            <div className="bg-white rounded-xl shadow-lg p-8 animate-slide-up">
-              <h2 className="text-2xl font-bold mb-6">Activities</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-8 bg-white shadow-lg rounded-xl animate-slide-up">
+              <h2 className="mb-6 text-2xl font-bold">Activities</h2>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 {destination.activities.map((activity, index) => (
-                  <div key={index} className="flex items-center p-4 bg-gray-50 rounded-lg">
-                    <Globe className="h-6 w-6 text-blue-500 mr-3" />
+                  <div key={index} className="flex items-center p-4 rounded-lg bg-gray-50">
+                    <Globe className="w-6 h-6 mr-3 text-blue-500" />
                     <span className="font-medium">{activity}</span>
                   </div>
                 ))}
@@ -108,15 +139,15 @@ export default function DestinationDetails() {
             </div>
 
             {/* Gallery */}
-            <div className="bg-white rounded-xl shadow-lg p-8 animate-slide-up">
-              <h2 className="text-2xl font-bold mb-6">Gallery</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="p-8 bg-white shadow-lg rounded-xl animate-slide-up">
+              <h2 className="mb-6 text-2xl font-bold">Gallery</h2>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 {destination.gallery.map((image, index) => (
                   <img
                     key={index}
                     src={image}
                     alt={`${destination.name} gallery ${index + 1}`}
-                    className="w-full h-48 object-cover rounded-lg hover:opacity-75 transition-opacity cursor-pointer"
+                    className="object-cover w-full h-48 transition-opacity rounded-lg cursor-pointer hover:opacity-75"
                   />
                 ))}
               </div>
@@ -126,26 +157,26 @@ export default function DestinationDetails() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Weather Info */}
-            <div className="bg-white rounded-xl shadow-lg p-6 animate-slide-up">
-              <h3 className="text-xl font-semibold mb-4">Weather Information</h3>
+            <div className="p-6 bg-white shadow-lg rounded-xl animate-slide-up">
+              <h3 className="mb-4 text-xl font-semibold">Weather Information</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <Calendar className="h-5 w-5 text-gray-400 mr-2" />
+                    <Calendar className="w-5 h-5 mr-2 text-gray-400" />
                     <span>Best Time to Visit</span>
                   </div>
                   <span className="font-medium">{destination.weather.bestTime}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <Thermometer className="h-5 w-5 text-gray-400 mr-2" />
+                    <Thermometer className="w-5 h-5 mr-2 text-gray-400" />
                     <span>Average Temperature</span>
                   </div>
                   <span className="font-medium">{destination.weather.avgTemp}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <Cloud className="h-5 w-5 text-gray-400 mr-2" />
+                    <Cloud className="w-5 h-5 mr-2 text-gray-400" />
                     <span>Climate</span>
                   </div>
                   <span className="font-medium">{destination.weather.climate}</span>
@@ -154,16 +185,16 @@ export default function DestinationDetails() {
             </div>
 
             {/* Book Now Card */}
-            <div className="bg-white rounded-xl shadow-lg p-6 sticky top-24 animate-slide-up">
-              <h3 className="text-xl font-semibold mb-4">Plan Your Trip</h3>
+            <div className="sticky p-6 bg-white shadow-lg rounded-xl top-24 animate-slide-up">
+              <h3 className="mb-4 text-xl font-semibold">Plan Your Trip</h3>
               <button
                 onClick={() => navigate('/booking')}
-                className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
+                className="flex items-center justify-center w-full py-3 text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700"
               >
-                <Calendar className="h-5 w-5 mr-2" />
+                <Calendar className="w-5 h-5 mr-2" />
                 Book Now
               </button>
-              <p className="text-sm text-gray-500 mt-4 text-center">
+              <p className="mt-4 text-sm text-center text-gray-500">
                 Secure your spot and create lasting memories
               </p>
             </div>

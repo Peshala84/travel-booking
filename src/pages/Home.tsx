@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import FeaturedDestination from '../components/FeaturedDestination';
 import { Star, Clock, Users, Calendar, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,16 +22,19 @@ export default function Home() {
 
   const featuredDestinations = [
     {
+      id: "1",
       image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963",
       title: "Cinque Terre, Italy",
       description: "Experience the colorful coastal villages of the Italian Riviera."
     },
     {
+      id: "2",
       image: "https://images.unsplash.com/photo-1528181304800-259b08848526",
       title: "Santorini, Greece",
       description: "Discover whitewashed buildings and stunning sunsets over the Aegean Sea."
     },
     {
+      id: "3",
       image: "https://images.unsplash.com/photo-1512100356356-de1b84283e18",
       title: "Bali, Indonesia",
       description: "Explore tropical beaches, ancient temples, and lush rice terraces."
@@ -38,6 +43,7 @@ export default function Home() {
 
   const popularPackages = [
     {
+      id: 1,
       title: "European Discovery",
       duration: "10 Days",
       price: "$2,499",
@@ -46,6 +52,7 @@ export default function Home() {
       reviews: 128
     },
     {
+      id: 2,
       title: "Asian Adventure",
       duration: "12 Days",
       price: "$2,899",
@@ -54,6 +61,7 @@ export default function Home() {
       reviews: 96
     },
     {
+      id: 3,
       title: "African Safari",
       duration: "8 Days",
       price: "$3,299",
@@ -88,17 +96,17 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <div 
-        className="h-screen relative bg-cover bg-center"
+        className="relative h-screen bg-center bg-cover"
         style={{
           backgroundImage: 'url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3")'
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50">
-          <div className="h-full flex flex-col items-center justify-center px-4">
-            <h1 className="text-4xl md:text-6xl font-bold text-white text-center mb-6 animate-fade-in">
+          <div className="flex flex-col items-center justify-center h-full px-4">
+            <h1 className="mb-6 text-4xl font-bold text-center text-white md:text-6xl animate-fade-in">
               Discover Your Next Adventure
             </h1>
-            <p className="text-xl text-white text-center mb-8 max-w-2xl animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <p className="max-w-2xl mb-8 text-xl text-center text-white animate-slide-up" style={{ animationDelay: '0.2s' }}>
               Explore breathtaking destinations and create unforgettable memories with our curated travel experiences.
             </p>
             <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
@@ -108,14 +116,15 @@ export default function Home() {
       </div>
 
       {/* Featured Destinations */}
-      <section className="py-20 px-4 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Featured Destinations</h2>
-        <p className="text-gray-600 mb-12">Explore our hand-picked destinations for your next journey</p>
+      <section className="px-4 py-20 mx-auto max-w-7xl">
+        <h2 className="mb-2 text-3xl font-bold text-gray-900">Featured Destinations</h2>
+        <p className="mb-12 text-gray-600">Explore our hand-picked destinations for your next journey</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {featuredDestinations.map((destination, index) => (
             <FeaturedDestination
               key={index}
+              id={destination.id}
               image={destination.image}
               title={destination.title}
               description={destination.description}
@@ -125,41 +134,41 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="bg-blue-50 py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Why Travel With Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <section className="py-20 overflow-hidden bg-blue-50">
+        <div className="px-4 mx-auto max-w-7xl">
+          <h2 className="mb-12 text-3xl font-bold text-center text-gray-900">Why Travel With Us</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: <Users className="h-8 w-8 text-blue-600" />,
+                icon: <Users className="w-8 h-8 text-blue-600" />,
                 title: "Expert Guides",
                 description: "Professional local guides with deep knowledge"
               },
               {
-                icon: <Calendar className="h-8 w-8 text-blue-600" />,
+                icon: <Calendar className="w-8 h-8 text-blue-600" />,
                 title: "Flexible Booking",
                 description: "Easy scheduling and free cancellation"
               },
               {
-                icon: <Star className="h-8 w-8 text-blue-600" />,
+                icon: <Star className="w-8 h-8 text-blue-600" />,
                 title: "Best Experience",
                 description: "Highly rated tours and activities"
               },
               {
-                icon: <Clock className="h-8 w-8 text-blue-600" />,
+                icon: <Clock className="w-8 h-8 text-blue-600" />,
                 title: "24/7 Support",
                 description: "Round-the-clock customer service"
               }
             ].map((item, index) => (
               <div 
                 key={index} 
-                className="text-center p-6 bg-white rounded-xl shadow-sm transform transition-all duration-300 hover:scale-105 hover:shadow-xl animate-slide-up"
+                className="p-6 text-center transition-all duration-300 transform bg-white shadow-sm rounded-xl hover:scale-105 hover:shadow-xl animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex justify-center mb-4 animate-float">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
                 <p className="text-gray-600">{item.description}</p>
               </div>
             ))}
@@ -168,31 +177,34 @@ export default function Home() {
       </section>
 
       {/* Popular Packages */}
-      <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12">Popular Packages</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="px-4 py-20">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="mb-12 text-3xl font-bold text-gray-900">Popular Packages</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {popularPackages.map((pkg, index) => (
-              <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105">
-                <img src={pkg.image} alt={pkg.title} className="w-full h-48 object-cover" />
+              <div key={index} className="overflow-hidden transition-transform bg-white shadow-lg rounded-xl hover:scale-105">
+                <img src={pkg.image} alt={pkg.title} className="object-cover w-full h-48" />
                 <div className="p-6">
-                  <div className="flex justify-between items-center mb-4">
+                  <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl font-semibold">{pkg.title}</h3>
-                    <span className="text-blue-600 font-bold">{pkg.price}</span>
+                    <span className="font-bold text-blue-600">{pkg.price}</span>
                   </div>
                   <div className="flex items-center mb-4">
-                    <Clock className="h-5 w-5 text-gray-400 mr-2" />
+                    <Clock className="w-5 h-5 mr-2 text-gray-400" />
                     <span className="text-gray-600">{pkg.duration}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <Star className="h-5 w-5 text-yellow-400 mr-1" />
+                      <Star className="w-5 h-5 mr-1 text-yellow-400" />
                       <span className="font-medium">{pkg.rating}</span>
-                      <span className="text-gray-600 ml-1">({pkg.reviews} reviews)</span>
+                      <span className="ml-1 text-gray-600">({pkg.reviews} reviews)</span>
                     </div>
-                    <button className="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                    <button 
+                      onClick={() => navigate(`/packages/${pkg.id}`)}
+                      className="flex items-center font-medium text-blue-600 hover:text-blue-800"
+                    >
                       View Details
-                      <ArrowRight className="h-4 w-4 ml-1" />
+                      <ArrowRight className="w-4 h-4 ml-1" />
                     </button>
                   </div>
                 </div>
@@ -203,10 +215,10 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="bg-gray-50 py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">What Our Travelers Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section id="testimonials" className="py-20 overflow-hidden bg-gray-50">
+        <div className="px-4 mx-auto max-w-7xl">
+          <h2 className="mb-12 text-3xl font-bold text-center text-gray-900">What Our Travelers Say</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial, index) => (
               <div 
                 key={index} 
@@ -219,14 +231,14 @@ export default function Home() {
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover mr-4 animate-float"
+                    className="object-cover w-12 h-12 mr-4 rounded-full animate-float"
                   />
                   <div>
                     <h3 className="font-semibold">{testimonial.name}</h3>
-                    <p className="text-gray-600 text-sm">{testimonial.location}</p>
+                    <p className="text-sm text-gray-600">{testimonial.location}</p>
                   </div>
                 </div>
-                <p className="text-gray-600 italic">"{testimonial.text}"</p>
+                <p className="italic text-gray-600">"{testimonial.text}"</p>
               </div>
             ))}
           </div>
@@ -234,17 +246,17 @@ export default function Home() {
       </section>
 
       {/* Newsletter */}
-      <section className="py-20 px-4">
+      <section className="px-4 py-20">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Get Travel Updates</h2>
-          <p className="text-gray-600 mb-8">Subscribe to our newsletter and never miss our special offers!</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900">Get Travel Updates</h2>
+          <p className="mb-8 text-gray-600">Subscribe to our newsletter and never miss our special offers!</p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <input
               type="email"
               placeholder="Enter your email"
-              className="px-6 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+              className="px-6 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
             />
-            <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            <button className="px-8 py-3 text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700">
               Subscribe
             </button>
           </div>

@@ -88,7 +88,7 @@ export default function Booking() {
     switch (currentStep) {
       case 'package':
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {packages.map((pkg) => (
               <div
                 key={pkg.id}
@@ -100,14 +100,14 @@ export default function Booking() {
                 <img
                   src={pkg.image}
                   alt={pkg.title}
-                  className="w-full h-48 object-cover"
+                  className="object-cover w-full h-48"
                 />
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{pkg.title}</h3>
-                  <p className="text-gray-600 mb-4">{pkg.description}</p>
+                  <h3 className="mb-2 text-xl font-semibold">{pkg.title}</h3>
+                  <p className="mb-4 text-gray-600">{pkg.description}</p>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-gray-600">
-                      <Calendar className="h-4 w-4 mr-1" />
+                      <Calendar className="w-4 h-4 mr-1" />
                       <span>{pkg.duration}</span>
                     </div>
                     <span className="text-xl font-bold text-blue-600">${pkg.price}</span>
@@ -120,10 +120,10 @@ export default function Booking() {
 
       case 'details':
         return (
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="p-8 bg-white shadow-lg rounded-xl">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   First Name
                 </label>
                 <input
@@ -131,12 +131,12 @@ export default function Booking() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Last Name
                 </label>
                 <input
@@ -144,12 +144,12 @@ export default function Booking() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Email
                 </label>
                 <input
@@ -157,12 +157,12 @@ export default function Booking() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Phone
                 </label>
                 <input
@@ -170,19 +170,19 @@ export default function Booking() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Number of Travelers
                 </label>
                 <select
                   name="travelers"
                   value={formData.travelers}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 >
                   {[1, 2, 3, 4, 5, 6].map(num => (
@@ -191,7 +191,7 @@ export default function Booking() {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Travel Date
                 </label>
                 <input
@@ -199,12 +199,12 @@ export default function Booking() {
                   name="date"
                   value={formData.date}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
               </div>
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block mb-2 text-sm font-medium text-gray-700">
                   Special Requests
                 </label>
                 <textarea
@@ -212,7 +212,7 @@ export default function Booking() {
                   value={formData.specialRequests}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 ></textarea>
               </div>
             </div>
@@ -222,10 +222,10 @@ export default function Booking() {
       case 'payment':
         return (
           <div className="max-w-2xl mx-auto">
-            <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="p-8 bg-white shadow-lg rounded-xl">
               <div className="mb-8">
-                <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
-                <div className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
+                <h3 className="mb-4 text-xl font-semibold">Order Summary</h3>
+                <div className="flex items-center justify-between p-4 rounded-lg bg-gray-50">
                   <div>
                     <p className="font-medium">{selectedPackage?.title}</p>
                     <p className="text-gray-600">{formData.travelers} travelers</p>
@@ -236,10 +236,10 @@ export default function Booking() {
                 </div>
               </div>
 
-              <h3 className="text-xl font-semibold mb-6">Payment Details</h3>
+              <h3 className="mb-6 text-xl font-semibold">Payment Details</h3>
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Card Number
                   </label>
                   <input
@@ -248,12 +248,12 @@ export default function Booking() {
                     value={formData.cardNumber}
                     onChange={handleChange}
                     placeholder="1234 5678 9012 3456"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Cardholder Name
                   </label>
                   <input
@@ -261,13 +261,13 @@ export default function Booking() {
                     name="cardName"
                     value={formData.cardName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block mb-2 text-sm font-medium text-gray-700">
                       Expiry Date
                     </label>
                     <input
@@ -276,12 +276,12 @@ export default function Booking() {
                       value={formData.expiry}
                       onChange={handleChange}
                       placeholder="MM/YY"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block mb-2 text-sm font-medium text-gray-700">
                       CVV
                     </label>
                     <input
@@ -290,7 +290,7 @@ export default function Booking() {
                       value={formData.cvv}
                       onChange={handleChange}
                       placeholder="123"
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       required
                     />
                   </div>
@@ -303,18 +303,18 @@ export default function Booking() {
       case 'confirmation':
         return (
           <div className="max-w-2xl mx-auto text-center">
-            <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="p-8 bg-white shadow-lg rounded-xl">
               <div className="flex justify-center mb-6">
-                <CheckCircle className="h-16 w-16 text-green-500 animate-bounce" />
+                <CheckCircle className="w-16 h-16 text-green-500 animate-bounce" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              <h3 className="mb-4 text-2xl font-bold text-gray-900">
                 Booking Confirmed!
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className="mb-6 text-gray-600">
                 Thank you for booking with us. Your confirmation has been sent to {formData.email}
               </p>
-              <div className="bg-gray-50 rounded-lg p-6 text-left">
-                <h4 className="font-semibold mb-4">Booking Details:</h4>
+              <div className="p-6 text-left rounded-lg bg-gray-50">
+                <h4 className="mb-4 font-semibold">Booking Details:</h4>
                 <div className="space-y-2">
                   <p><span className="font-medium">Package:</span> {selectedPackage?.title}</p>
                   <p><span className="font-medium">Travel Date:</span> {formData.date}</p>
@@ -335,9 +335,9 @@ export default function Booking() {
         style={{
           backgroundImage: 'url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05")'
         }}>
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="text-center max-w-4xl px-4">
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 animate-fade-in">
+        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="max-w-4xl px-4 text-center">
+            <h1 className="mb-6 text-4xl font-bold text-white md:text-6xl animate-fade-in">
               Book Your Dream Vacation
             </h1>
             <p className="text-xl text-white animate-slide-up">
@@ -348,10 +348,10 @@ export default function Booking() {
       </div>
 
       {/* Booking Process */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="px-4 py-12 mx-auto max-w-7xl">
         {/* Progress Steps */}
         <div className="mb-12">
-          <div className="flex justify-between items-center max-w-3xl mx-auto">
+          <div className="flex items-center justify-between max-w-3xl mx-auto">
             {steps.map((step, index) => (
               <div
                 key={step.id}
@@ -369,9 +369,9 @@ export default function Booking() {
                       ? 'bg-blue-600 text-white'
                       : 'bg-gray-200'
                   }`}>
-                    <step.icon className="h-5 w-5" />
+                    <step.icon className="w-5 h-5" />
                   </div>
-                  <span className="text-sm mt-2">{step.title}</span>
+                  <span className="mt-2 text-sm">{step.title}</span>
                 </div>
                 {index < steps.length - 1 && (
                   <div className={`h-1 w-24 mx-4 ${
@@ -395,20 +395,20 @@ export default function Booking() {
           {currentStep !== 'package' && (
             <button
               onClick={handleBack}
-              className="flex items-center px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+              className="flex items-center px-6 py-3 text-gray-700 transition-colors bg-gray-100 rounded-lg hover:bg-gray-200"
             >
-              <ArrowLeft className="h-5 w-5 mr-2" />
+              <ArrowLeft className="w-5 h-5 mr-2" />
               Back
             </button>
           )}
           {currentStep !== 'confirmation' && (
             <button
               onClick={handleNext}
-              className="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors ml-auto"
+              className="flex items-center px-6 py-3 ml-auto text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700"
               disabled={currentStep === 'package' && !selectedPackage}
             >
               {currentStep === 'payment' ? 'Confirm Booking' : 'Next'}
-              <ArrowRight className="h-5 w-5 ml-2" />
+              <ArrowRight className="w-5 h-5 ml-2" />
             </button>
           )}
         </div>

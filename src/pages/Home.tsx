@@ -89,6 +89,12 @@ export default function Home() {
       location: "London, UK",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
       text: "The African safari was a life-changing experience. The accommodations were luxurious and the wildlife sightings were amazing."
+    },
+    {
+      name: "Emma Wilson",
+      location: "London, UK",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      text: "The African safari was a life-changing experience. The accommodations were luxurious and the wildlife sightings were amazing."
     }
   ];
 
